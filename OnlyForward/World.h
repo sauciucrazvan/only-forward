@@ -2,6 +2,10 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Tile.h"
+
+#include "GrassTile.h"
+
 #define MAP_WIDTH  16
 #define MAP_HEIGHT 16
 #define TILE_SIZE  32
@@ -9,10 +13,11 @@
 class World
 {
 public:
-	int tileMap[MAP_HEIGHT][MAP_WIDTH] = { 1,1,1,2,2,0,0,0,0,0,0,0,0,0,0,0,
-										   1,1,2,2,0,0,0,0,0,0,0,0,0,0,0,0,
-										   2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0 };
-	int* getTileMap();
+	Tile* tileMap[MAP_HEIGHT][MAP_WIDTH] = { new GrassTile() };
+	World();
+	//~World();
+
 	void drawTileMap(GLFWwindow* window);
+	bool collideCheckOnTile(int x, int y);
 };
 

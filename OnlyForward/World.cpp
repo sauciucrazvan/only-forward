@@ -1,8 +1,19 @@
 #include <GLFW/glfw3.h>
+#include <iostream>
 
 #include "World.h"
 
-int* World::getTileMap() { return *tileMap; }
+#include "WaterTile.h"
+
+World::World() {
+    for (int i = 0; i < MAP_HEIGHT; ++i) {
+        for (int j = 0; j < MAP_WIDTH; ++j) {
+            tileMap[i][j] = new GrassTile();
+        }
+    }
+
+    tileMap[0][0] = new WaterTile(), tileMap[0][1] = new WaterTile(), tileMap[1][0] = new WaterTile();
+}
 
 void World::drawTileMap(GLFWwindow* window) {
     int windowWidth, windowHeight;
@@ -21,14 +32,12 @@ void World::drawTileMap(GLFWwindow* window) {
 
     for (int y = 0; y < MAP_HEIGHT; y++) {
         for (int x = 0; x < MAP_WIDTH; x++) {
-            int tile = tileMap[y][x];
+            Tile tile = *(tileMap[y][x]);
 
             float xPos = x * TILE_SIZE + offsetX,
                   yPos = y * TILE_SIZE + offsetY;
 
-            if (tile == 0) glColor3f(0.0f, 1.0f, 0.0f);
-            else if (tile == 1) glColor3f(0.0f, 0.0f, 1.0f);
-            else if (tile == 2) glColor3f(1.0f, 1.0f, 0.0f);
+            glColor3f(tile.red, tile.green, tile.blue);
 
             glBegin(GL_QUADS);
             glVertex2f(xPos, yPos);
@@ -39,3 +48,26 @@ void World::drawTileMap(GLFWwindow* window) {
         }
     }
 }
+
+bool World::collideCheckOnTile(int x, int y) {
+    if (x < 0 || x >= MAP_WIDTH || y < 0 || y >= MAP_HEIGHT) {
+        std::cerr << "Error: Out-of-bounds tile access (" << x << ", " << y << ")" << std::endl;
+        return false;
+    }
+
+    if (!tileMap[x][y]) {
+        std::cerr << "Error: Accessing uninitialized tile at (" << x << ", " << y << ")" << std::endl;
+        return false;
+    }
+
+    return tileMap[x][y]->collidable;
+}
+
+//World::~World() {
+//    for (int i = 0; i < MAP_HEIGHT; ++i) {
+//        for (int j = 0; j < MAP_WIDTH; ++j) {
+//            delete tileMap[i][j];
+//            tileMap[i][j] = nullptr;
+//        }
+//    }
+//}

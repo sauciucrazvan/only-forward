@@ -133,15 +133,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GrassTile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="WaterTile.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GrassTile.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tile.h" />
+    <ClInclude Include="WaterTile.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

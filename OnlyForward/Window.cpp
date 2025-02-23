@@ -42,9 +42,9 @@ int Window::initWindow() {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        world.drawTileMap(window);     // Draws the map
-        player.processInput(window);   // Checks for inputs from the player
-        player.drawPlayer(window);     // Draws the player
+        world.drawTileMap(window);            // Draws the map
+        player.processInput(window, world);   // Checks for inputs from the player
+        player.drawPlayer(window);            // Draws the player
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
