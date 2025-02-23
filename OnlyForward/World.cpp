@@ -4,13 +4,13 @@
 #include "World.h"
 
 World::World() {
-    tileMap[0][0] = new WaterTile(), tileMap[0][1] = new WaterTile(), tileMap[1][0] = new WaterTile();
+    /*tileMap[0][0] = new WaterTile(), tileMap[0][1] = new WaterTile(), tileMap[1][0] = new WaterTile();
     tileMap[12][2] = new WaterTile(), tileMap[13][2] = new WaterTile(), tileMap[14][2] = new WaterTile();
     tileMap[11][2] = new WaterTile(), tileMap[12][3] = new BridgeTile(), tileMap[12][4] = new WaterTile(), tileMap[12][5] = new WaterTile();
     tileMap[11][3] = new BridgeTile(), tileMap[11][4] = new WaterTile(), tileMap[11][5] = new WaterTile();
     tileMap[10][6] = new WaterTile(), tileMap[15][6] = new WaterTile();
     tileMap[16][16] = new StoneTile(), tileMap[16][17] = new StoneTile(), tileMap[16][18] = new StoneTile();
-    tileMap[15][16] = new SandTile(), tileMap[15][17] = new SandTile();
+    tileMap[15][16] = new SandTile(), tileMap[15][17] = new SandTile();*/
 
     for (int i = 0; i < MAP_HEIGHT; ++i) {
         for (int j = 0; j < MAP_WIDTH; ++j) {
