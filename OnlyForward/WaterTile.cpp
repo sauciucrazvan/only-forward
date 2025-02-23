@@ -1,4 +1,4 @@
 #include "WaterTile.h"
 #include "Tile.h"
 
-WaterTile::WaterTile() : Tile(0.0f, 0.0f, 1.0f, false) {}
+WaterTile::WaterTile() : Tile(40 / 255.0F, 105 / 255.0F, 195 / 255.0F, false) {}

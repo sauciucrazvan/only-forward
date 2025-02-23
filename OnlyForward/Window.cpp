@@ -37,8 +37,12 @@ int Window::initWindow() {
     World world; Player player;
     player.initPlayer();           // Initiliazes the player coords
 
+    /* Background color */
+    glClearColor(32 / 255.0F, 85 / 255.0F, 158 / 255.0F, 1);
+
     while (!glfwWindowShouldClose(window))
     {
+        
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 

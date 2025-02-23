@@ -1,3 +1,3 @@
 #include "GrassTile.h"
 
-GrassTile::GrassTile() : Tile(0.0f, 1.0f, 0.0f, true) {}
+GrassTile::GrassTile() : Tile(73 / 255.0F, 149 / 255.0F, 82 / 255.0F, true) {}

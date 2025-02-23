@@ -6,6 +6,7 @@
 class Player
 {
 public:
+	bool keyPressed = false;
 	int playerX, playerY;
 
 	void initPlayer();

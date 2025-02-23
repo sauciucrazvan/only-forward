@@ -133,17 +133,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BridgeTile.cpp" />
     <ClCompile Include="GrassTile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SandTile.cpp" />
+    <ClCompile Include="StoneTile.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="WaterTile.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BridgeTile.h" />
     <ClInclude Include="GrassTile.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SandTile.h" />
+    <ClInclude Include="StoneTile.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="WaterTile.h" />
     <ClInclude Include="Window.h" />
