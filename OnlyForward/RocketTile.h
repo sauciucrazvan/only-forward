@@ -2,10 +2,10 @@
 
 #include "Tile.h"
 
-class WaterTile: public Tile
+class RocketTile: public Tile
 {
 public:
-	WaterTile();
+	RocketTile();
 
 	void onCollide();
 };

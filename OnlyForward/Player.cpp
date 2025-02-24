@@ -3,31 +3,25 @@
 #include "World.h"
 #include "Player.h"
 
+float Player::speed = 1.0f;
+
 void Player::initPlayer() {
     playerX = (MAP_WIDTH / 2 - 1) * TILE_SIZE;
     playerY = (MAP_HEIGHT / 2 - 1) * TILE_SIZE;
 }
 
-void Player::drawPlayer(GLFWwindow* window) {
-    int windowWidth, windowHeight;
-    glfwGetWindowSize(window, &windowWidth, &windowHeight);
-
-    float mapWidth = MAP_WIDTH * TILE_SIZE,
-          mapHeight = MAP_HEIGHT * TILE_SIZE,
-          offsetX = (windowWidth - mapWidth) / 2.0f,
-          offsetY = (windowHeight - mapHeight) / 2.0f;
-
+void Player::drawPlayer() {
     glColor3f(1.0f, 0.0f, 0.0f);
     glBegin(GL_QUADS);
-    glVertex2f(playerX + offsetX, playerY + offsetY);
-    glVertex2f(playerX + TILE_SIZE + offsetX, playerY + offsetY);
-    glVertex2f(playerX + TILE_SIZE + offsetX, playerY + TILE_SIZE + offsetY);
-    glVertex2f(playerX + offsetX, playerY + TILE_SIZE + offsetY);
+    glVertex2f(playerX, playerY);
+    glVertex2f(playerX + TILE_SIZE, playerY);
+    glVertex2f(playerX + TILE_SIZE, playerY + TILE_SIZE);
+    glVertex2f(playerX, playerY + TILE_SIZE);
     glEnd();
 }
 
 void Player::processInput(GLFWwindow* window, World world) {
-    float speed = TILE_SIZE;
+    float speed = TILE_SIZE * Player::speed;
 
     bool alignedX = (static_cast<int>(this->playerX) % TILE_SIZE) == 0;
     bool alignedY = (static_cast<int>(this->playerY) % TILE_SIZE) == 0;

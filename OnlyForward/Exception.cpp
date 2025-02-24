@@ -1,6 +1,11 @@
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include "Exception.h"
 
 #include <iostream>
+#include <ctime>
 
 Exception::Exception(char* _id, char* _desc) {
 	this->id = new char[strlen(_id) + 1];
@@ -10,5 +15,8 @@ Exception::Exception(char* _id, char* _desc) {
 }
 
 void Exception::Print() {
-	std::cerr << "[EXCEPTION - " << this->id << "]: " << this->desc << std::endl;
+	std::time_t t = std::time(0);
+	std::tm* now = std::localtime(&t);
+
+	std::cerr << "[" << now->tm_hour << ":" << now->tm_min << ":" << now->tm_sec << "] " << "[EXCEPTION - " << this->id << "] " << this->desc << std::endl;
 }

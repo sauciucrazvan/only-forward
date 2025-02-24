@@ -1,27 +1,39 @@
 #pragma once
+
 #include <iostream>
+#include <string>
 
 #include "World.h"
 #include "Player.h"
 
-class Game
-{
+class Game {
+private:
+    int score;
+
+    Game() : score(0) {}
+
+    Game(const Game&) = delete;
+    Game& operator=(const Game&) = delete;
+
 public:
-	int score;
-	World world; Player player;
+    
+    static Game& getInstance() {
+        static Game instance;
+        return instance;
+    }
 
-	Game();
+    Player player; World world;
 
-	Game operator++();
-	Game operator--();
 
-	friend Game& operator+=(Game& _game, const int _score);
-	friend Game& operator-=(Game& _game, const int _score);
-	friend Game& operator*=(Game& _game, const int _score);
-	friend Game& operator/=(Game& _game, const int _score);
+    Game& operator++();
+    Game& operator--();
 
-	friend std::ostream& operator<<(std::ostream& o, Game& _game);
+    /* FRIEND FUNCTIONS */
+    friend Game& operator+=(Game& _game, const int _score);
+    friend Game& operator-=(Game& _game, const int _score);
+    friend Game& operator*=(Game& _game, const int _score);
+    friend Game& operator/=(Game& _game, const int _score);
 
-	static std::string toString(Game& _game);
+    static std::string toString(Game& _game);
+    friend std::ostream& operator<<(std::ostream& o, Game& _game);
 };
-

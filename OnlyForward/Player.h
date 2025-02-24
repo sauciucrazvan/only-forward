@@ -5,12 +5,11 @@
 
 class Player
 {
-protected:
+public:
 	bool keyPressed = false;
 	int playerX, playerY;
-public:
+	static float speed;
 	void initPlayer();
-	void drawPlayer(GLFWwindow* window);
+	void drawPlayer();
 	void processInput(GLFWwindow* window, World world);
 };
-

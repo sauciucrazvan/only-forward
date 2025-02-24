@@ -1,45 +1,24 @@
 #include <GLFW/glfw3.h>
-#include <iostream>
 
 #include "World.h"
 #include "Exception.h"
 
-World::World() {
-    tileMap[0][0] = new BarrierTile();
-    tileMap[1][0] = new StoneTile();
+#include <iostream>
+#include <stack>
+#include <vector>
+#include <random>
 
-    for (int i = 0; i < MAP_HEIGHT; ++i) {
-        for (int j = 0; j < MAP_WIDTH; ++j) {
-            if(!tileMap[i][j]) tileMap[i][j] = new GrassTile();
-        }
-    }
+World::World() {
+    this->generateMaze();
 }
 
-void World::drawTileMap(GLFWwindow* window) {
-    int windowWidth, windowHeight;
-    glfwGetWindowSize(window, &windowWidth, &windowHeight);
-
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(-0.5, windowWidth - 0.5, windowHeight - 0.5, -0.5, -1, 1);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-
-    glViewport(0, 0, windowWidth, windowHeight);
-
-    glShadeModel(GL_FLAT);
-
-    float mapWidth = MAP_WIDTH * TILE_SIZE,
-          mapHeight = MAP_HEIGHT * TILE_SIZE,
-          offsetX = (windowWidth - mapWidth) / 2.0f, 
-          offsetY = (windowHeight - mapHeight) / 2.0f;
-
+void World::drawTileMap() {
     for (int y = 0; y < MAP_HEIGHT; y++) {
         for (int x = 0; x < MAP_WIDTH; x++) {
             Tile tile = *(tileMap[y][x]);
 
-            int xPos = static_cast<int>(x * TILE_SIZE + offsetX),
-                yPos = static_cast<int>(y * TILE_SIZE + offsetY);
+            float xPos = x * TILE_SIZE;
+            float yPos = y * TILE_SIZE;
 
             glColor3f(tile.red, tile.green, tile.blue);
 
@@ -68,6 +47,8 @@ bool World::collideCheckOnTile(int x, int y) {
             return false;
         }
 
+        tileMap[y][x]->onCollide();
+
         return tileMap[y][x]->collidable;
     }
     catch (Exception e) {
@@ -75,3 +56,75 @@ bool World::collideCheckOnTile(int x, int y) {
         return false;
     }
 }
+
+/* dfs algorithm, should be used to generate the static levels and the random ones, later on */
+void World::generateMaze() {
+    srand(time(0));
+
+    bool visited[MAP_HEIGHT][MAP_WIDTH] = { false };
+
+    for (int y = 0; y < MAP_HEIGHT; ++y) {
+        for (int x = 0; x < MAP_WIDTH; ++x) {
+            tileMap[y][x] = new BarrierTile();
+        }
+    }
+
+    int startX = (MAP_WIDTH / 2 - 1), startY = (MAP_HEIGHT / 2 - 1);
+
+    int endY = rand() % MAP_HEIGHT,
+        endX = (rand() % 2 == 0) ? 0 : (MAP_WIDTH - 1);
+
+    visited[startY][startX] = true;
+    visited[endY][endX] = true;
+
+    tileMap[startY][startX] = new GrassTile();
+    tileMap[endY][endX] = new SandTile();
+
+    std::vector<std::pair<int, int>> stack;
+    stack.push_back({ startY, startX });
+
+    while (!stack.empty()) {
+        int cy = stack.back().first;
+        int cx = stack.back().second;
+        stack.pop_back();
+
+        int directions[4][2] = { {0, -2}, {2, 0}, {0, 2}, {-2, 0} };
+        std::shuffle(std::begin(directions), std::end(directions), std::default_random_engine(rand()));
+
+        for (int d = 0; d < 4; ++d) {
+            int ny = cy + directions[d][1];
+            int nx = cx + directions[d][0];
+
+            if (nx >= 0 && nx < MAP_WIDTH && ny >= 0 && ny < MAP_HEIGHT && !visited[ny][nx]) {
+                visited[cy][cx] = true;
+                visited[ny][nx] = true;
+
+                tileMap[(cy + ny) / 2][(cx + nx) / 2] = new GrassTile();
+                tileMap[ny][nx] = new GrassTile();
+
+                stack.push_back({ cy, cx });
+                stack.push_back({ ny, nx });
+                break;
+            }
+        }
+    }
+
+    int patchSize = 1;
+    int patches = MAP_WIDTH * MAP_HEIGHT / 50;
+    for (int i = 1; i < patches; ++i) {
+        int x = rand() % (MAP_WIDTH - patchSize);
+        int y = rand() % (MAP_HEIGHT - patchSize);
+
+        for (int py = y; py < y + patchSize; ++py) {
+            for (int px = x; px < x + patchSize; ++px) {
+                GrassTile* grassTile = dynamic_cast<GrassTile*>(tileMap[py][px]);
+                if (grassTile) {
+                    tileMap[py][px] = new RocketTile();
+                }
+            }
+        }
+    }
+}
+
+
+
