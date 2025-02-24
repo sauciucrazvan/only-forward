@@ -2,6 +2,9 @@
 
 #include "World.h"
 #include "Player.h"
+#include "Game.h"
+
+#include <iostream>
 
 float Player::speed = 1.0f;
 
@@ -53,6 +56,7 @@ void Player::processInput(GLFWwindow* window, World world) {
                 this->keyPressed = true;
             }
         }
+        
     }
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_RELEASE &&
@@ -60,6 +64,18 @@ void Player::processInput(GLFWwindow* window, World world) {
         glfwGetKey(window, GLFW_KEY_A) == GLFW_RELEASE &&
         glfwGetKey(window, GLFW_KEY_D) == GLFW_RELEASE) {
         this->keyPressed = false;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS && !this->resetPressed) {
+        this->playerX = (MAP_WIDTH / 2 - 1) * TILE_SIZE;
+        this->playerY = (MAP_HEIGHT / 2 - 1) * TILE_SIZE;
+        Game::getInstance() -= 10;
+        std::cout << Game::getInstance();
+        this->resetPressed = true;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_R) == GLFW_RELEASE) {
+        this->resetPressed = false;
     }
 }
 

@@ -6,7 +6,7 @@
 class Player
 {
 public:
-	bool keyPressed = false;
+	bool keyPressed = false, resetPressed = false;
 	int playerX, playerY;
 	static float speed;
 	void initPlayer();
