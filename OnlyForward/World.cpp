@@ -22,6 +22,8 @@ void World::drawTileMap(GLFWwindow* window) {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
+    glViewport(0, 0, windowWidth, windowHeight);
+
     glShadeModel(GL_FLAT);
 
     float mapWidth = MAP_WIDTH * TILE_SIZE,
