@@ -1,8 +1,11 @@
 #include <GLFW/glfw3.h>
 
+#include <iostream>
+
 #include "Window.h"
 #include "World.h"
 #include "Player.h"
+#include "Game.h"
 
 int Window::initWindow() {
     GLFWwindow* window;
@@ -34,8 +37,8 @@ int Window::initWindow() {
     glfwMakeContextCurrent(window);
 
     /* Loop until the user closes the window */
-    World world; Player player;
-    player.initPlayer();           // Initiliazes the player coords
+    Game game;
+    game.player.initPlayer();           // Initiliazes the player coords
 
     /* Background color */
     glClearColor(32 / 255.0F, 85 / 255.0F, 158 / 255.0F, 1);
@@ -46,10 +49,12 @@ int Window::initWindow() {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        world.drawTileMap(window);            // Draws the map
-        player.processInput(window, world);   // Checks for inputs from the player
-        player.drawPlayer(window);            // Draws the player
+        game.world.drawTileMap(window);                 // Draws the map
+        game.player.processInput(window, game.world);   // Checks for inputs from the player
+        game.player.drawPlayer(window);                 // Draws the player
 
+        std::cout << "[DEBUG]: " << game;
+        
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 

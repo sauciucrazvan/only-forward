@@ -136,6 +136,7 @@
     <ClCompile Include="BarrierTile.cpp" />
     <ClCompile Include="BridgeTile.cpp" />
     <ClCompile Include="Exception.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GrassTile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="BarrierTile.h" />
     <ClInclude Include="BridgeTile.h" />
     <ClInclude Include="Exception.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GrassTile.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SandTile.h" />

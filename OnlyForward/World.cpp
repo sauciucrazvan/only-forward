@@ -5,6 +5,9 @@
 #include "Exception.h"
 
 World::World() {
+    tileMap[0][0] = new BarrierTile();
+    tileMap[1][0] = new StoneTile();
+
     for (int i = 0; i < MAP_HEIGHT; ++i) {
         for (int j = 0; j < MAP_WIDTH; ++j) {
             if(!tileMap[i][j]) tileMap[i][j] = new GrassTile();
