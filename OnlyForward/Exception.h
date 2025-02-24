@@ -5,8 +5,9 @@
 class Exception
 {
 private:
-	char excp[64];
+	char *id, *desc;
 public:
-
+	Exception(char* _id, char* _desc);
+	void Print();
 };
 

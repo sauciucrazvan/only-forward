@@ -57,6 +57,12 @@
     <ClCompile Include="SandTile.cpp">
       <Filter>Source Files\Game\Tiles\Types</Filter>
     </ClCompile>
+    <ClCompile Include="BarrierTile.cpp">
+      <Filter>Source Files\Game\Tiles\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Exception.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -84,6 +90,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SandTile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BarrierTile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Exception.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -133,7 +133,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BarrierTile.cpp" />
     <ClCompile Include="BridgeTile.cpp" />
+    <ClCompile Include="Exception.cpp" />
     <ClCompile Include="GrassTile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -145,7 +147,9 @@
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BarrierTile.h" />
     <ClInclude Include="BridgeTile.h" />
+    <ClInclude Include="Exception.h" />
     <ClInclude Include="GrassTile.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SandTile.h" />
