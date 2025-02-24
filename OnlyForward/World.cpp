@@ -78,7 +78,7 @@ void World::generateMaze() {
     visited[endY][endX] = true;
 
     tileMap[startY][startX] = new GrassTile();
-    tileMap[endY][endX] = new SandTile();
+    tileMap[endY][endX] = new FlagTile();
 
     std::vector<std::pair<int, int>> stack;
     stack.push_back({ startY, startX });
