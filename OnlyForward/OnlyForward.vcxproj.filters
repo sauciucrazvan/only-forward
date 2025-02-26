@@ -72,6 +72,9 @@
     <ClCompile Include="FlagTile.cpp">
       <Filter>Source Files\Game\Tiles\Types</Filter>
     </ClCompile>
+    <ClCompile Include="PathTile.cpp">
+      <Filter>Source Files\Game\Tiles\Types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -114,6 +117,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FlagTile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PathTile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

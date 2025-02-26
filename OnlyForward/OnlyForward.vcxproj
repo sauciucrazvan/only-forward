@@ -140,6 +140,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GrassTile.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PathTile.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RocketTile.cpp" />
     <ClCompile Include="SandTile.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="FlagTile.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GrassTile.h" />
+    <ClInclude Include="PathTile.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RocketTile.h" />
     <ClInclude Include="SandTile.h" />

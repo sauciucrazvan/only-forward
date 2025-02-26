@@ -6,5 +6,6 @@ class GrassTile: public Tile
 {
 public:
 	GrassTile();
+	void onCollide();
 };
 

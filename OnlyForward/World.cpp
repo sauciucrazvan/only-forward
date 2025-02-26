@@ -13,6 +13,7 @@ World::World() {
 }
 
 void World::drawTileMap() {
+    glClear(GL_COLOR_BUFFER_BIT);
     for (int y = 0; y < MAP_HEIGHT; y++) {
         for (int x = 0; x < MAP_WIDTH; x++) {
             Tile tile = *(tileMap[y][x]);
