@@ -78,6 +78,9 @@
     <ClCompile Include="TextRenderer.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="StarTile.cpp">
+      <Filter>Source Files\Game\Tiles\Types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -129,6 +132,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TextRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StarTile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

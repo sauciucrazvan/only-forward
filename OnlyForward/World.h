@@ -14,6 +14,7 @@
 #include "RocketTile.h"
 #include "FlagTile.h"
 #include "PathTile.h"
+#include "StarTile.h"
 
 /*		 MAP SETTINGS		*/
 #define MAP_WIDTH  72

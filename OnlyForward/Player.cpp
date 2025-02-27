@@ -77,8 +77,11 @@ void Player::processInput(GLFWwindow* window, World world) {
     if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS && !this->resetPressed) {
         this->playerX = (MAP_WIDTH / 2 - 1) * TILE_SIZE;
         this->playerY = (MAP_HEIGHT / 2 - 1) * TILE_SIZE;
-        Game::getInstance() -= 10;
-        std::cout << Game::getInstance();
+        
+        if (Game::getInstance() > -999) {
+            Game::getInstance() -= 10;
+            std::cout << Game::getInstance(); //debugging
+        }
         this->resetPressed = true;
     }
 

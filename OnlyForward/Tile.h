@@ -13,6 +13,6 @@ public:
 	Tile(GLfloat _red, GLfloat _green, GLfloat _blue, bool _collidable);
 	virtual ~Tile();
 
-	virtual void onCollide();
+	virtual void onCollide() = 0;
 };
 

@@ -6,5 +6,6 @@ class PathTile: public Tile
 {
 public:
 	PathTile();
+	void onCollide();
 };
 

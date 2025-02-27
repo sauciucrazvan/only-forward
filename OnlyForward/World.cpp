@@ -16,12 +16,12 @@ void World::drawTileMap() {
     glClear(GL_COLOR_BUFFER_BIT);
     for (int y = 0; y < MAP_HEIGHT; y++) {
         for (int x = 0; x < MAP_WIDTH; x++) {
-            Tile tile = *(tileMap[y][x]);
+            Tile* tile = tileMap[y][x];
 
             float xPos = x * TILE_SIZE;
             float yPos = y * TILE_SIZE;
 
-            glColor3f(tile.red, tile.green, tile.blue);
+            glColor3f(tile->red, tile->green, tile->blue);
 
             glBegin(GL_QUADS);
             glVertex2f(xPos, yPos);
@@ -120,7 +120,7 @@ void World::generateMaze() {
             for (int px = x; px < x + patchSize; ++px) {
                 GrassTile* grassTile = dynamic_cast<GrassTile*>(tileMap[py][px]);
                 if (grassTile) {
-                    tileMap[py][px] = new RocketTile();
+                    tileMap[py][px] = new StarTile();
                 }
             }
         }

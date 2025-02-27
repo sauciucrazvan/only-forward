@@ -144,6 +144,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RocketTile.cpp" />
     <ClCompile Include="SandTile.cpp" />
+    <ClCompile Include="StarTile.cpp" />
     <ClCompile Include="StoneTile.cpp" />
     <ClCompile Include="TextRenderer.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="RocketTile.h" />
     <ClInclude Include="SandTile.h" />
+    <ClInclude Include="StarTile.h" />
     <ClInclude Include="stb_easy_font.h" />
     <ClInclude Include="StoneTile.h" />
     <ClInclude Include="TextRenderer.h" />

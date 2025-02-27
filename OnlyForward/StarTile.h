@@ -1,11 +1,10 @@
 #pragma once
-
 #include "Tile.h"
 
-class BarrierTile: public Tile
+class StarTile: public Tile
 {
 public:
-	BarrierTile();
+	StarTile();
 	void onCollide();
 };
 
