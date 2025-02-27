@@ -148,6 +148,7 @@
     <ClCompile Include="StoneTile.cpp" />
     <ClCompile Include="TextRenderer.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="UI.cpp" />
     <ClCompile Include="WaterTile.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="World.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="StoneTile.h" />
     <ClInclude Include="TextRenderer.h" />
     <ClInclude Include="Tile.h" />
+    <ClInclude Include="UI.h" />
     <ClInclude Include="WaterTile.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="World.h" />

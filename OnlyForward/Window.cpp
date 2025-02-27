@@ -11,6 +11,7 @@
 #include "World.h"
 #include "Player.h"
 #include "Game.h"
+#include "UI.h"
 
 int Window::initWindow() {
     GLFWwindow* window;
@@ -49,9 +50,8 @@ int Window::initWindow() {
     Game& game = Game::getInstance();
     game.player.initPlayer(); // Initializes the player coords
 
-    TextRenderer textRenderer;
-    textRenderer.setText("Hello, world!"); //just a placeholder
-
+    UI userInterface;
+    
     double startTime = glfwGetTime();
     while (!glfwWindowShouldClose(window))
     {
@@ -87,9 +87,8 @@ int Window::initWindow() {
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
 
-        // Render text
-        textRenderer.setText(Game::toString(game).c_str());
-        textRenderer.renderText(50, 30, 2.0f, 1.0f, 1.0f, 0.0f);
+        // Render UI
+        userInterface.Render();
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
