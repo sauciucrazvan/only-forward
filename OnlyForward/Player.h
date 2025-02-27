@@ -9,13 +9,12 @@
 class Player
 {
 public:
-	std::vector<std::pair<int, int>> body;
+	int						playerX, playerY;
+	
+	static float			speed;
 
-	int playerX, playerY;
-	static float speed;
-	bool keyPressed = false, resetPressed = false;
-
-	Player();
+	bool					keyPressed = false, 
+							resetPressed = false;
 
 	void initPlayer();
 	void drawPlayer();

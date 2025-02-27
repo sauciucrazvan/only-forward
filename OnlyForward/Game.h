@@ -8,9 +8,9 @@
 
 class Game {
 private:
-    int score;
+    int score, level;
 
-    Game() : score(0) {}
+    Game() : score(0), level(1) {}
 
     Game(const Game&) = delete;
     Game& operator=(const Game&) = delete;
@@ -25,8 +25,8 @@ public:
     Player player; World world;
 
 
-    Game& operator++();
-    Game& operator--();
+    Game& operator++(int);
+    Game& operator--(int);
 
     /* FRIEND FUNCTIONS */
     friend Game& operator+=(Game& _game, const int _score);

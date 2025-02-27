@@ -5,7 +5,9 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <ctime>
+
 #include "Window.h"
+#include "TextRenderer.h"
 #include "World.h"
 #include "Player.h"
 #include "Game.h"
@@ -21,8 +23,8 @@ int Window::initWindow() {
     GLFWmonitor* primaryMonitor = glfwGetPrimaryMonitor();
     const GLFWvidmode* mode = glfwGetVideoMode(primaryMonitor);
 
-    int windowWidth = (int) mode->width * 0.75,
-        windowHeight = (int) mode->height * 0.75;
+    int windowWidth = (int)mode->width * 0.75,
+        windowHeight = (int)mode->height * 0.75;
 
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(windowWidth, windowHeight, "Only Forward", NULL, NULL);
@@ -45,7 +47,10 @@ int Window::initWindow() {
 
     /* Loop until the user closes the window */
     Game& game = Game::getInstance();
-    game.player.initPlayer();           // Initializes the player coords
+    game.player.initPlayer(); // Initializes the player coords
+
+    TextRenderer textRenderer;
+    textRenderer.setText("Hello, world!"); //just a placeholder
 
     double startTime = glfwGetTime();
     while (!glfwWindowShouldClose(window))
@@ -61,11 +66,11 @@ int Window::initWindow() {
         glLoadIdentity();
 
         // Apply camera transformation
-        glTranslatef((GLfloat) -game.player.playerX + windowWidth / 2, (GLfloat) - game.player.playerY + windowHeight / 2, 0.0f);
+        glTranslatef((GLfloat)-game.player.playerX + windowWidth / 2, (GLfloat)-game.player.playerY + windowHeight / 2, 0.0f);
 
-        game.world.drawTileMap();                       // Draws the map
-        game.player.processInput(window, game.world);   // Checks for inputs from the player
-        game.player.drawPlayer();                       // Draws the player
+        game.world.drawTileMap();                     // Draws the map
+        game.player.processInput(window, game.world); // Checks for inputs from the player
+        game.player.drawPlayer();                     // Draws the player
 
         double currentTime = glfwGetTime();
         double elapsedTime = currentTime - startTime;
@@ -74,7 +79,18 @@ int Window::initWindow() {
             if (Player::speed != 1.0f) Player::speed = 1.0f; // Resets the player's speed (used for powerups)
             startTime = currentTime;
         }
-        
+
+        // Reset coordinate system for UI
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        glOrtho(0, windowWidth, windowHeight, 0, -1, 1);
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+
+        // Render text
+        textRenderer.setText(Game::toString(game).c_str());
+        textRenderer.renderText(50, 30, 2.0f, 1.0f, 1.0f, 0.0f);
+
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 

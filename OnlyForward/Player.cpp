@@ -8,12 +8,6 @@
 
 float Player::speed = 1.0f;
 
-Player::Player() {
-    int length = 3;
-    for (int i = 0; i < 3; ++i)
-        body.push_back({ (MAP_WIDTH / 2 - 1) * TILE_SIZE, (MAP_HEIGHT / 2 - 1) * TILE_SIZE + i * TILE_SIZE });
-}
-
 void Player::initPlayer() {
     playerX = (MAP_WIDTH / 2 - 1) * TILE_SIZE;
     playerY = (MAP_HEIGHT / 2 - 1) * TILE_SIZE;

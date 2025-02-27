@@ -1,12 +1,12 @@
 #include "Game.h"
 
-Game& Game::operator++() {
-    this->score++;
+Game& Game::operator++(int) {
+    this->level++;
     return *this;
 }
 
-Game& Game::operator--() {
-    this->score--;
+Game& Game::operator--(int) {
+    this->level--;
     return *this;
 }
 
@@ -32,7 +32,7 @@ Game& operator/=(Game& _game, const int _score) {
 }
 
 std::string Game::toString(Game& _game) {
-    return "Score: " + std::to_string(_game.score);
+    return "Score: " + std::to_string(_game.score) + "\nLevel: " + std::to_string(_game.level);
 }
 
 std::ostream& operator<<(std::ostream& o, Game& _game) {
