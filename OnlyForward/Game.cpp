@@ -46,11 +46,11 @@ Game& operator/=(Game& _game, const double _score) {
     return _game;
 }
 
-std::string Game::toString(Game& _game) {
-    return "Score: " + std::to_string(_game.score) + "\nLevel: #" + std::to_string(_game.level) + "\nPress R to restart";
+std::string Game::toString() {
+    return "Score: " + std::to_string(this->score) + "\nLevel: #" + std::to_string(this->level) + "\nPress R to restart";
 }
 
 std::ostream& operator<<(std::ostream& o, Game& _game) { // used
-    o << Game::toString(_game) << std::endl;
+    o << _game.toString() << std::endl;
     return o;
 }

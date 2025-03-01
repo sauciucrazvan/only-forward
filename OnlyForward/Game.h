@@ -30,13 +30,14 @@ public:
     bool operator<(int x);
     bool operator>(int x);
 
+    std::string toString();
+    
     /* FRIEND FUNCTIONS */
     friend Game& operator+=(Game& _game, const int _score);
     friend Game& operator-=(Game& _game, const int _score);
     friend Game& operator*=(Game& _game, const double _score);
     friend Game& operator/=(Game& _game, const double _score);
 
-    static std::string toString(Game& _game);
     friend std::ostream& operator<<(std::ostream& o, Game& _game);
 
     int getLevel();

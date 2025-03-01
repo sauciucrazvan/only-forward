@@ -10,7 +10,7 @@ TextRenderer UI::announcementText;
 
 UI::UI() {
 	this->framerate = 0;
-	announcementText.setText("Hello world!"); // Greeting message, when you open the game
+	announcementText.setText("Use WASD to move around"); // Greeting message, when you open the game
 }
 
 void UI::SetFPS(int _framerate) {
@@ -18,7 +18,7 @@ void UI::SetFPS(int _framerate) {
 }
 
 void UI::Render(GLFWwindow* window) {
-	this->infoText.setText(Game::toString(Game::getInstance()).c_str());
+	this->infoText.setText(Game::getInstance().toString().c_str());
 	this->infoText.renderText(5, 30, 2.0f, 1.0f, 1.0f, 0.0f);
 
 	char buf[64];
@@ -27,7 +27,7 @@ void UI::Render(GLFWwindow* window) {
 	this->debugText.renderText(5, 5, 2.0f, 0.0f, 0.8f, 0.0f);
 
 	double currentTime = glfwGetTime();
-	if (currentTime - announcementTime < 2.0) { // Should stay for 2 seconds
+	if (currentTime - announcementTime < 3.0) { // Should stay for 3 seconds
 		int windowWidth, windowHeight;
 		glfwGetWindowSize(window, &windowWidth, &windowHeight);
 

@@ -16,7 +16,7 @@ public:
 	bool					keyPressed = false, 
 							resetPressed = false;
 
-	void initPlayer();
-	void drawPlayer();
-	void processInput(GLFWwindow* window, World world);
+	void					initPlayer();
+	void					drawPlayer();
+	void					processInput(GLFWwindow* window, World world);
 };
