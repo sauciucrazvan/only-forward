@@ -10,6 +10,7 @@ TextRenderer UI::announcementText;
 
 UI::UI() {
 	this->framerate = 0;
+	announcementText.setText("Hello world!"); // Greeting message, when you open the game
 }
 
 void UI::SetFPS(int _framerate) {
@@ -27,15 +28,10 @@ void UI::Render(GLFWwindow* window) {
 
 	double currentTime = glfwGetTime();
 	if (currentTime - announcementTime < 2.0) { // Should stay for 2 seconds
-		
 		int windowWidth, windowHeight;
 		glfwGetWindowSize(window, &windowWidth, &windowHeight);
 
-		this->announcementText.renderText(
-			(windowWidth - (strlen(UI::announcementText.getText()) * 12)) / 2, 
-			50, 4.0f, 1.0f, 1.0f, 0.0f
-		);
-
+		this->announcementText.renderText(5, 120, 2.0f, 1.0f, 1.0f, 0.0f);
 	}
 }
 
