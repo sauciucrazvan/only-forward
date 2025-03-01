@@ -25,6 +25,9 @@
     <Filter Include="Source Files\Game\Tiles\Types">
       <UniqueIdentifier>{15e612ed-9a3c-46de-9cde-908456c33694}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Tiles\Objects">
+      <UniqueIdentifier>{18e7d282-4ece-4a5f-b6dd-5c6ff5c87178}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -84,6 +87,12 @@
     <ClCompile Include="UI.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="TileObject.cpp">
+      <Filter>Source Files\Game\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="StarObject.cpp">
+      <Filter>Source Files\Game\Tiles\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -141,6 +150,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TileObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StarObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

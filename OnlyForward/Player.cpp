@@ -17,7 +17,7 @@ void Player::initPlayer() {
 }
 
 void Player::drawPlayer() {
-    glColor3f(1.0f, 0.0f, 0.0f);
+    glColor3f(80 / 255.0F, 173 / 255.0F, 82 / 255.0F);
     glBegin(GL_QUADS);
     glVertex2f(playerX, playerY);
     glVertex2f(playerX + TILE_SIZE, playerY);
@@ -83,7 +83,7 @@ void Player::processInput(GLFWwindow* window, World world) {
         
         if (Game::getInstance() > -999) {
             Game::getInstance() -= 10;
-            UI::showAnnouncement("GAME RESET! (-10 SCORE)");
+            UI::showAnnouncement("LEVEL RESET! (-10 SCORE)");
             std::cout << Game::getInstance(); //debugging
         }
         this->resetPressed = true;

@@ -5,7 +5,9 @@
 #include "Exception.h"
 #include "UI.h"
 
-StarTile::StarTile() : Tile(255 / 255.0F, 255 / 255.0F, 0 / 255.0F, true) {}
+#include "StarObject.h"
+
+StarTile::StarTile(GLfloat _red, GLfloat _green, GLfloat _blue) : Tile(_red, _green, _blue, true, new StarObject()) {}
 
 void StarTile::onCollide() {
     Game::getInstance() *= 1.05; //+5% bonus
@@ -17,7 +19,7 @@ void StarTile::onCollide() {
 
     try {
         if (tileX < 0 || tileX >= MAP_WIDTH || tileY < 0 || tileY >= MAP_HEIGHT) {
-            throw Exception((char*)"INVALID_TILE", (char*)"Invalid tile coordinates! (StarTile)");
+            throw Exception((char*)"INVALID_TILE", (char*) "Invalid tile coordinates! (StarTile)");
         }
         Game::getInstance().world.tileMap[tileY][tileX] = new PathTile();
     }

@@ -25,6 +25,7 @@ class World
 {
 public:
 	Tile* tileMap[MAP_HEIGHT][MAP_WIDTH] = { new GrassTile() };
+	
 	World();
 
 	void drawTileMap();

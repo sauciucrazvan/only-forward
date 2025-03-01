@@ -1,16 +1,16 @@
 #pragma once
 
 #include <GLFW/glfw3.h>
+#include "TileObject.h"
 
 class Tile
 {
 public:
 	GLfloat red, green, blue;
 	bool collidable;
-	//Object object; // Attached object (ROCK, BUSH, MUSHROOMS, FLOWERS, etc.)
-	//String assetSrc; // Link to the tile's asset
+	TileObject* object; // Attached object (ROCK, BUSH, MUSHROOMS, FLOWERS, etc.)
 
-	Tile(GLfloat _red, GLfloat _green, GLfloat _blue, bool _collidable);
+	Tile(GLfloat _red = 0.0f, GLfloat _green = 0.0f, GLfloat _blue = 0.0f, bool _collidable = true, TileObject* _object = nullptr);
 	virtual ~Tile();
 
 	virtual void onCollide() = 0;

@@ -29,6 +29,12 @@ void World::drawTileMap() {
             glVertex2f(xPos + TILE_SIZE, yPos + TILE_SIZE);
             glVertex2f(xPos, yPos + TILE_SIZE);
             glEnd();
+
+            if (tile->object != nullptr) {
+                glPushMatrix();
+                tile->object->draw(xPos, yPos);
+                glPopMatrix();
+            }
         }
     }
 }
@@ -112,7 +118,7 @@ void World::generateMaze() {
     }
 
     int patchSize = 1;
-    int patches = MAP_WIDTH * MAP_HEIGHT / 50;
+    int patches = MAP_WIDTH * MAP_HEIGHT / 100;
     for (int i = 1; i < patches; ++i) {
         int x = rand() % (MAP_WIDTH - patchSize);
         int y = rand() % (MAP_HEIGHT - patchSize);
@@ -121,7 +127,7 @@ void World::generateMaze() {
             for (int px = x; px < x + patchSize; ++px) {
                 GrassTile* grassTile = dynamic_cast<GrassTile*>(tileMap[py][px]);
                 if (grassTile) {
-                    tileMap[py][px] = new StarTile();
+                    tileMap[py][px] = new StarTile(73 / 255.0F, 149 / 255.0F, 82 / 255.0F);
                 }
             }
         }

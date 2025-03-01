@@ -84,7 +84,7 @@ int Window::initWindow() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     /* Background color */
-    glClearColor(32 / 255.0F, 85 / 255.0F, 158 / 255.0F, 1);
+    glClearColor(0 / 255.0F, 85 / 255.0F, 160   / 255.0F, 1);
 
     /* Loop until the user closes the window */
     Game& game = Game::getInstance();
