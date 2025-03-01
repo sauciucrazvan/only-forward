@@ -7,7 +7,7 @@
 
 #include "StarObject.h"
 
-StarTile::StarTile(GLfloat _red, GLfloat _green, GLfloat _blue) : Tile(_red, _green, _blue, true, new StarObject()) {}
+StarTile::StarTile() : Tile(60 / 255.0f, 162 / 255.0f, 82 / 255.0f, true, new StarObject()) {}
 
 void StarTile::onCollide() {
     Game::getInstance() *= 1.05; //+5% bonus

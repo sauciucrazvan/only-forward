@@ -93,6 +93,9 @@
     <ClCompile Include="StarObject.cpp">
       <Filter>Source Files\Game\Tiles\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="FlagObject.cpp">
+      <Filter>Source Files\Game\Tiles\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -156,6 +159,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StarObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FlagObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,9 +1,10 @@
 #include "FlagTile.h"
+#include "FlagObject.h"
 
 #include "Game.h"
 #include "UI.h"
 
-FlagTile::FlagTile() : Tile(199 / 255.0F, 191 / 255.0F, 46 / 255.0F, false) {
+FlagTile::FlagTile() : Tile(199 / 255.0F, 191 / 255.0F, 46 / 255.0F, false, new FlagObject()) {
 }
 
 void FlagTile::onCollide() {

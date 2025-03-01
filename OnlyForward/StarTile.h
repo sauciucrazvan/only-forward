@@ -6,7 +6,7 @@
 class StarTile: public Tile
 {
 public:
-	StarTile(GLfloat _red, GLfloat _green, GLfloat _blue);
+	StarTile();
 	void onCollide();
 };
 

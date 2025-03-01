@@ -127,7 +127,7 @@ void World::generateMaze() {
             for (int px = x; px < x + patchSize; ++px) {
                 GrassTile* grassTile = dynamic_cast<GrassTile*>(tileMap[py][px]);
                 if (grassTile) {
-                    tileMap[py][px] = new StarTile(73 / 255.0F, 149 / 255.0F, 82 / 255.0F);
+                    tileMap[py][px] = new StarTile();
                 }
             }
         }
