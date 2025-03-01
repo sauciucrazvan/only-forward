@@ -12,6 +12,8 @@ float Player::speed = 1.0f;
 void Player::initPlayer() {
     playerX = (MAP_WIDTH / 2 - 1) * TILE_SIZE;
     playerY = (MAP_HEIGHT / 2 - 1) * TILE_SIZE;
+
+    Game::levelStartTime = glfwGetTime();
 }
 
 void Player::drawPlayer() {

@@ -1,6 +1,8 @@
 #include "Game.h"
 #include "UI.h"
 
+double Game::levelStartTime = 0;
+
 Game& Game::operator++(int) { //used
     this->level++;
     return *this;

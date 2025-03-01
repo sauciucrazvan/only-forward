@@ -16,6 +16,7 @@ private:
     Game& operator=(const Game&) = delete;
 
 public:
+    static double levelStartTime;
     
     static Game& getInstance() {
         static Game instance;
