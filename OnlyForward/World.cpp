@@ -70,7 +70,8 @@ void World::generateMaze() {
         }
     }
 
-    int startX = (MAP_WIDTH / 2 - 1), startY = (MAP_HEIGHT / 2 - 1);
+    int startX = (MAP_WIDTH / 2 - 1), 
+        startY = (MAP_HEIGHT / 2 - 1);
 
     int endY = rand() % MAP_HEIGHT,
         endX = (rand() % 2 == 0) ? 0 : (MAP_WIDTH - 1);

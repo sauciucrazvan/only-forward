@@ -2,6 +2,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <ctime>
@@ -12,6 +13,14 @@
 #include "Player.h"
 #include "Game.h"
 #include "UI.h"
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+    glViewport(0, 0, width, height);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0, width, height, 0, -1, 1);
+    glMatrixMode(GL_MODELVIEW);
+}
 
 int Window::initWindow() {
     GLFWwindow* window;
@@ -35,6 +44,9 @@ int Window::initWindow() {
         return -1;
     }
 
+    /* Registers the window resize callback, hopefully that fixes the blurry issue (hopefully) */
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
     /* Hopefully centers the window upon launch */
     int posX = (mode->width - windowWidth) / 2;
     int posY = (mode->height - windowHeight) / 2;
@@ -42,6 +54,13 @@ int Window::initWindow() {
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+
+    /* Enable anti-aliasing */
+    glEnable(GL_MULTISAMPLE);
+
+    /* Set up texture filtering */
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     /* Background color */
     glClearColor(32 / 255.0F, 85 / 255.0F, 158 / 255.0F, 1);
@@ -51,22 +70,15 @@ int Window::initWindow() {
     game.player.initPlayer(); // Initializes the player coords
 
     UI userInterface;
-    
+
     double startTime = glfwGetTime();
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // Set up the projection and modelview matrices
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        glOrtho(0, windowWidth, windowHeight, 0, -1, 1);
-        glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
-
         // Apply camera transformation
-        glTranslatef((GLfloat)-game.player.playerX + windowWidth / 2, (GLfloat)-game.player.playerY + windowHeight / 2, 0.0f);
+        glTranslatef((GLfloat)-game.player.playerX + windowWidth / 2, windowHeight / 8, 0.0f);
 
         game.world.drawTileMap();                     // Draws the map
         game.player.processInput(window, game.world); // Checks for inputs from the player
@@ -100,3 +112,4 @@ int Window::initWindow() {
     glfwTerminate();
     return 0;
 }
+
