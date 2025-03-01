@@ -21,6 +21,10 @@ bool Game::operator>(int x) {
     return this->score > x;
 }
 
+int Game::getLevel() {
+    return this->level;
+}
+
 /* FRIEND FUNCTIONS */
 Game& operator+=(Game& _game, const int _score) { //used
     _game.score += _score;

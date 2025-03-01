@@ -9,14 +9,17 @@ FlagTile::FlagTile() : Tile(199 / 255.0F, 191 / 255.0F, 46 / 255.0F, false, new 
 
 void FlagTile::onCollide() {
 	double difference = glfwGetTime() - Game::levelStartTime;
+	int bonus = 0;
 
 	if(difference < 120)
-		Game::getInstance() += 120 - difference; // Bonus for completing the level early
+		bonus = 120 - difference; // Bonus for completing the level early
 
-	Game::getInstance() += 100;
+	Game::getInstance() += 100 + bonus;
 	Game::getInstance()++;
 	
-	UI::showAnnouncement("You've finished the level!");
+	char buf[128];
+	sprintf_s(buf, "You've finished level #%d. (+%d score)", Game::getInstance().getLevel() - 1, (100 + bonus));
+	UI::showAnnouncement(buf);
 
 	std::cout << Game::getInstance();
 	Game::levelStartTime = glfwGetTime();

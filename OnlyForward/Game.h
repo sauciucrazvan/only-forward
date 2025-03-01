@@ -25,7 +25,6 @@ public:
 
     Player player; World world;
 
-
     Game& operator++(int);
     Game& operator--(int);
     bool operator<(int x);
@@ -39,4 +38,6 @@ public:
 
     static std::string toString(Game& _game);
     friend std::ostream& operator<<(std::ostream& o, Game& _game);
+
+    int getLevel();
 };
