@@ -14,6 +14,8 @@
 #include "Game.h"
 #include "UI.h"
 
+int framerate = 0;
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
@@ -21,6 +23,25 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glOrtho(0, width, height, 0, -1, 1);
     glMatrixMode(GL_MODELVIEW);
 }
+
+void CalculateFrameRate()
+{
+    static float framesPerSecond = 0.0f;
+    static int fps;
+    static float lastTime = 0.0f;
+    float currentTime = glfwGetTime();
+    ++framesPerSecond;
+    
+    framerate = fps;
+    
+    if (currentTime - lastTime > 1.0f)
+    {
+        lastTime = currentTime;
+        fps = (int)framesPerSecond;
+        framesPerSecond = 0;
+    }
+}
+
 
 int Window::initWindow() {
     GLFWwindow* window;
@@ -83,15 +104,7 @@ int Window::initWindow() {
         game.world.drawTileMap();                     // Draws the map
         game.player.processInput(window, game.world); // Checks for inputs from the player
         game.player.drawPlayer();                     // Draws the player
-
-        double currentTime = glfwGetTime();
-        double elapsedTime = currentTime - startTime;
-
-        if (elapsedTime >= 0.5) {
-            if (Player::speed != 1.0f) Player::speed = 1.0f; // Resets the player's speed (used for powerups)
-            startTime = currentTime;
-        }
-
+        
         // Reset coordinate system for UI
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
@@ -100,6 +113,8 @@ int Window::initWindow() {
         glLoadIdentity();
 
         // Render UI
+        CalculateFrameRate();
+        userInterface.SetFPS(framerate);
         userInterface.Render();
 
         /* Swap front and back buffers */
