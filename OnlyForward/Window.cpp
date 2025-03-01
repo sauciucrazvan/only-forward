@@ -115,7 +115,7 @@ int Window::initWindow() {
         // Render UI
         CalculateFrameRate();
         userInterface.SetFPS(framerate);
-        userInterface.Render();
+        userInterface.Render(window);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);

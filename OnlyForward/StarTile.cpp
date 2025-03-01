@@ -3,11 +3,13 @@
 #include "Game.h"
 #include "Player.h"
 #include "Exception.h"
+#include "UI.h"
 
 StarTile::StarTile() : Tile(255 / 255.0F, 255 / 255.0F, 0 / 255.0F, true) {}
 
 void StarTile::onCollide() {
     Game::getInstance() *= 1.05; //+5% bonus
+    UI::showAnnouncement("+5% BONUS SCORE!");
 
     // Reset the tile
     int tileX = Game::getInstance().player.playerX / TILE_SIZE;

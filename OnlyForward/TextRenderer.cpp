@@ -29,6 +29,10 @@ void TextRenderer::setText(const char* newText) {
     numQuads = stb_easy_font_print(0, 0, text, NULL, vertexBuffer.data(), vertexBuffer.size());
 }
 
+char* TextRenderer::getText() {
+    return text;
+}
+
 void TextRenderer::renderText(float x, float y, float scale, float r, float g, float b) {
     glPushMatrix();
     glTranslatef(x, y, 0);

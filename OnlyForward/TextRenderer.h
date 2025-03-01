@@ -7,6 +7,7 @@ class TextRenderer {
 public:
     TextRenderer(); ~TextRenderer();
     void setText(const char* newText);
+    char* getText();
     void renderText(float x, float y, float scale, float r, float g, float b);
 
 private:

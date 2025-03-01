@@ -5,6 +5,7 @@
 #include "Game.h"
 
 #include <iostream>
+#include "UI.h"
 
 float Player::speed = 1.0f;
 
@@ -80,6 +81,7 @@ void Player::processInput(GLFWwindow* window, World world) {
         
         if (Game::getInstance() > -999) {
             Game::getInstance() -= 10;
+            UI::showAnnouncement("GAME RESET! (-10 SCORE)");
             std::cout << Game::getInstance(); //debugging
         }
         this->resetPressed = true;

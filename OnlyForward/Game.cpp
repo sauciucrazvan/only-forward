@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "UI.h"
 
 Game& Game::operator++(int) { //used
     this->level++;
