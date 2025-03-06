@@ -4,7 +4,7 @@
 #include "Game.h"
 #include "UI.h"
 
-FlagTile::FlagTile() : Tile(199 / 255.0F, 191 / 255.0F, 46 / 255.0F, false, new FlagObject()) {
+FlagTile::FlagTile() : Tile(1, 199 / 255.0F, 191 / 255.0F, 46 / 255.0F, false, new FlagObject()) {
 }
 
 void FlagTile::onCollide() {
@@ -25,5 +25,5 @@ void FlagTile::onCollide() {
 	Game::levelStartTime = glfwGetTime();
 	Game::getInstance().player.playerX = (MAP_WIDTH / 2 - 1) * TILE_SIZE;
 	Game::getInstance().player.playerY = (MAP_HEIGHT / 2 - 1) * TILE_SIZE;
-	Game::getInstance().world.generateMaze();
+	Game::getInstance().world.loadLevel(Game::getInstance().getLevel());
 }

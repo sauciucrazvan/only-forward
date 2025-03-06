@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "Exception.h"
 
-GrassTile::GrassTile() : Tile(73 / 255.0F, 149 / 255.0F, 82 / 255.0F, true) {}
+GrassTile::GrassTile() : Tile(3, 73 / 255.0F, 149 / 255.0F, 82 / 255.0F, true) {}
 
 void GrassTile::onCollide() {
     int tileX = Game::getInstance().player.playerX / TILE_SIZE;

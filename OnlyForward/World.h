@@ -31,5 +31,6 @@ public:
 	void drawTileMap();
 	bool collideCheckOnTile(int x, int y);
 	void generateMaze();
+	void loadLevel(int level);
 };
 

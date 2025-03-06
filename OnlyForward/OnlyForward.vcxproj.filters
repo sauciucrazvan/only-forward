@@ -28,6 +28,9 @@
     <Filter Include="Source Files\Game\Tiles\Objects">
       <UniqueIdentifier>{18e7d282-4ece-4a5f-b6dd-5c6ff5c87178}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Levels">
+      <UniqueIdentifier>{1e60e240-1978-484f-a45c-bf744cb95776}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -164,5 +167,14 @@
     <ClInclude Include="FlagObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="level.out" />
+    <None Include="1.leveldata">
+      <Filter>Source Files\Levels</Filter>
+    </None>
+    <None Include="2.leveldata">
+      <Filter>Source Files\Levels</Filter>
+    </None>
   </ItemGroup>
 </Project>

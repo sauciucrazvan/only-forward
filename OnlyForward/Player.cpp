@@ -1,11 +1,16 @@
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <GLFW/glfw3.h>
 
 #include "World.h"
 #include "Player.h"
 #include "Game.h"
+#include "UI.h"
 
 #include <iostream>
-#include "UI.h"
+#include <fstream>
 
 float Player::speed = 1.0f;
 
@@ -80,6 +85,8 @@ void Player::processInput(GLFWwindow* window, World world) {
     if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS && !this->resetPressed) {
         this->playerX = (MAP_WIDTH / 2 - 1) * TILE_SIZE;
         this->playerY = (MAP_HEIGHT / 2 - 1) * TILE_SIZE;
+
+		Game::getInstance().world.loadLevel(Game::getInstance().getLevel()); //reload level
         
         if (Game::getInstance() > -999) {
             Game::getInstance() -= 10;
@@ -91,6 +98,22 @@ void Player::processInput(GLFWwindow* window, World world) {
 
     if (glfwGetKey(window, GLFW_KEY_R) == GLFW_RELEASE) {
         this->resetPressed = false;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS) {
+        // save level
+        FILE* file = fopen("level.out", "w");
+
+		for (int y = 0; y < MAP_HEIGHT; ++y) {
+			for (int x = 0; x < MAP_WIDTH; ++x) {
+				fprintf(file, "%d ", world.tileMap[y][x]->id);
+			}
+			fprintf(file, "\n");
+		}
+
+        fclose(file);
+		UI::showAnnouncement("LEVEL SAVED!");
+        //std::cout << "LEVEL SAVED!" << std::endl;
     }
 }
 

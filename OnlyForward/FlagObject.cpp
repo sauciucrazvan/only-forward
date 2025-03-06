@@ -24,7 +24,6 @@ void FlagObject::draw(int _x, int _y) {
             else 
                 glColor3f(0.0f, 0.0f, 0.0f);
             
-
             float xPos = centerX - flagWidth / 2 + col * squareSize,
                   yPos = centerY - flagHeight / 2 + row * squareSize;
 

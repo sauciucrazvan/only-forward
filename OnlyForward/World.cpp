@@ -1,5 +1,6 @@
 #include <GLFW/glfw3.h>
 
+#include "Game.h"
 #include "World.h"
 #include "Exception.h"
 
@@ -7,9 +8,52 @@
 #include <stack>
 #include <vector>
 #include <random>
+#include <fstream>
 
 World::World() {
-    this->generateMaze();
+    //this->generateMaze();
+
+    // load level from leveldata file
+	this->loadLevel(1);
+}
+
+void World::loadLevel(int level) { 
+    char buf[16];
+    sprintf_s(buf, "%d.leveldata", level);
+    
+    std::ifstream levelData(buf);
+    
+    if (levelData.is_open()) {
+        for (int y = 0; y < MAP_HEIGHT; y++) {
+            for (int x = 0; x < MAP_WIDTH; x++) {
+                int tileId;
+                levelData >> tileId;
+                switch (tileId) {
+                case 1:
+                    tileMap[y][x] = new FlagTile();
+                    break;
+                case 2:
+                    tileMap[y][x] = new PathTile();
+                    break;
+                case 3:
+                    tileMap[y][x] = new GrassTile();
+                    break;
+                case 4:
+                    tileMap[y][x] = new BarrierTile();
+                    break;
+                case 100:
+                    tileMap[y][x] = new StarTile();
+                    break;
+                default:
+                    tileMap[y][x] = new BarrierTile();
+                    break;
+                }
+            }
+        }
+    }
+    else {
+        std::cerr << "Failed to open leveldata file!" << std::endl;
+    }
 }
 
 void World::drawTileMap() {
