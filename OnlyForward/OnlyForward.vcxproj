@@ -183,6 +183,9 @@
   <ItemGroup>
     <None Include="1.leveldata" />
     <None Include="2.leveldata" />
+    <None Include="3.leveldata" />
+    <None Include="4.leveldata" />
+    <None Include="5.leveldata" />
     <None Include="level.out" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -176,5 +176,14 @@
     <None Include="2.leveldata">
       <Filter>Source Files\Levels</Filter>
     </None>
+    <None Include="3.leveldata">
+      <Filter>Source Files\Levels</Filter>
+    </None>
+    <None Include="4.leveldata">
+      <Filter>Source Files\Levels</Filter>
+    </None>
+    <None Include="5.leveldata">
+      <Filter>Source Files\Levels</Filter>
+    </None>
   </ItemGroup>
 </Project>

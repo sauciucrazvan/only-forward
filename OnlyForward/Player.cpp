@@ -89,8 +89,11 @@ void Player::processInput(GLFWwindow* window, World world) {
 		Game::getInstance().world.loadLevel(Game::getInstance().getLevel()); //reload level
         
         if (Game::getInstance() > -999) {
-            Game::getInstance() -= 10;
-            UI::showAnnouncement("LEVEL RESET! (-10 SCORE)");
+            float scoreDecrease = (10 * (Game::getInstance().getLevel() * 0.5));
+            Game::getInstance() -= scoreDecrease;
+            char buf[64];
+            sprintf_s(buf, "LEVEL RESET! (-%.0f SCORE)", scoreDecrease);
+            UI::showAnnouncement(buf);
             std::cout << Game::getInstance(); //debugging
         }
         this->resetPressed = true;
@@ -100,13 +103,17 @@ void Player::processInput(GLFWwindow* window, World world) {
         this->resetPressed = false;
     }
 
+    // DEBUG KEY
     if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS) {
         // save level
         FILE* file = fopen("level.out", "w");
 
 		for (int y = 0; y < MAP_HEIGHT; ++y) {
 			for (int x = 0; x < MAP_WIDTH; ++x) {
-				fprintf(file, "%d ", world.tileMap[y][x]->id);
+				if (world.tileMap[y][x]->id == 2) {
+					fprintf(file, "3 ");
+					continue;
+				} else fprintf(file, "%d ", world.tileMap[y][x]->id);
 			}
 			fprintf(file, "\n");
 		}

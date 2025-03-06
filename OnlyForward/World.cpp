@@ -11,10 +11,8 @@
 #include <fstream>
 
 World::World() {
-    //this->generateMaze();
-
     // load level from leveldata file
-	this->loadLevel(1);
+    this->loadLevel(1);
 }
 
 void World::loadLevel(int level) { 
