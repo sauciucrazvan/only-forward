@@ -10,7 +10,7 @@ class Game {
 private:
     int score, level;
 
-    Game() : score(0), level(1) {}
+    Game() : score(0), level(0) {}
 
     Game(const Game&) = delete;
     Game& operator=(const Game&) = delete;

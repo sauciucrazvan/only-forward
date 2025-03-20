@@ -185,5 +185,8 @@
     <None Include="5.leveldata">
       <Filter>Source Files\Levels</Filter>
     </None>
+    <None Include="6.leveldata">
+      <Filter>Source Files\Levels</Filter>
+    </None>
   </ItemGroup>
 </Project>

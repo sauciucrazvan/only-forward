@@ -12,12 +12,12 @@
 
 World::World() {
     // load level from leveldata file
-    this->loadLevel(1);
+    this->loadLevel(0);
 }
 
 void World::loadLevel(int level) { 
-    char buf[16];
-    sprintf_s(buf, "%d.leveldata", level);
+    char buf[32];
+    sprintf_s(buf, "Levels/%d.leveldata", level);
     
     std::ifstream levelData(buf);
     
