@@ -107,7 +107,7 @@
       <AdditionalIncludeDirectories>C:\Users\Razvan\OneDrive\Documents\Visual Studio 2022\Libraries\glew-2.1.0\include;C:\Users\Razvan\OneDrive\Documents\Visual Studio 2022\Libraries\freetype-2.13.3\freetype-2.13.3\include;C:\Users\Razvan\OneDrive\Documents\Visual Studio 2022\Libraries\glfw-3.4.bin.WIN64\include;C:\Users\Razvan\OneDrive\Documents\Visual Studio 2022\Libraries\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\Razvan\OneDrive\Documents\Visual Studio 2022\Libraries\glad\src;C:\Users\Razvan\OneDrive\Documents\Visual Studio 2022\Libraries\glew-2.1.0;C:\Users\Razvan\OneDrive\Documents\Visual Studio 2022\Libraries\freetype-2.13.3\freetype-2.13.3;C:\Users\Razvan\OneDrive\Documents\Visual Studio 2022\Libraries\glfw-3.4.bin.WIN64\lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;freetype.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -124,7 +124,7 @@
       <AdditionalIncludeDirectories>C:\Users\Razvan\OneDrive\Documents\Visual Studio 2022\Libraries\glew-2.1.0\include;C:\Users\Razvan\OneDrive\Documents\Visual Studio 2022\Libraries\freetype-2.13.3\freetype-2.13.3\include;C:\Users\Razvan\OneDrive\Documents\Visual Studio 2022\Libraries\glfw-3.4.bin.WIN64\include;C:\Users\Razvan\OneDrive\Documents\Visual Studio 2022\Libraries\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
