@@ -40,11 +40,6 @@ All game files must be present in the same folder as the executable for proper f
 > [!NOTE]
 > The finish tile (ID: 1) should be included and reachable in the leveldata file to be able to complete the level.
 
-## Snapshots
+## Snapshot
 
-<details>
-  <summary>Expand to view snapshots</summary>
-  <image src="https://i.imgur.com/Q9soIBa.png" width="175" />
-  <image src="https://i.imgur.com/P5NggNf.png" width="300" />
-  <image src="https://i.imgur.com/vIoe5ai.png" width="300" />
-</details>
+<image src="https://razvansauciuc.dev/projects/only-forward.png" width="300" />
